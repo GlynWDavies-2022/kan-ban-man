@@ -2,6 +2,8 @@ const express = require('express');
 
 const server = express();
 
+const PORT = process.env.PORT ? process.env.PORT : 3000;
+
 const tasks = [
     {
         id: 1,
@@ -33,7 +35,7 @@ server.get('/tasks', (req, res) =>
     res.send(JSON.stringify(tasks));
 });
 
-server.listen(3000, () =>
+server.listen(PORT, () =>
 {
-    console.log("Server listening on port 3000")
+    console.log(`Server listening on port ${PORT}`);
 });
