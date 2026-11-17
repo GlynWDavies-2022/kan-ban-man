@@ -1,0 +1,18 @@
+{
+    "name": "kan-ban-man",
+    "version": "1.0.0",
+    "description": "Simple NodeJS learning project",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "NodeJS",
+        "Learning",
+        "Task Manager"
+    ],
+    "author": "Glyn Davies",
+    "license": "ISC",
+    "type": "commonjs"
+}
+
