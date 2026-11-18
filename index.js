@@ -9,30 +9,53 @@ const tasks = [
         id: 1,
         task: "Learn Claude",
         tags: ["Claude", "AI"],
-        status: "To Do"
+        status: "todo"
     },
     {
         id: 2,
         task: "Learn PGP",
         tags: ["PGP", "Encryption"],
-        status: "To Do"
+        status: "todo"
     },
     {
         id: 3,
         task: "Learn Node",
         tags: ["Node", "JavaScript"],
-        status: "Doing"
+        status: "doing"
     }
 ];
+
+// ------------------------------------------------------------------------------------------------
+// Endpoints
+// ------------------------------------------------------------------------------------------------
+
+// Default
 
 server.get('/', (req, res) =>
 {
     res.send('Welcome to the application!');
 });
 
+// Create New
+
+server.post('/tasks', () => { });
+
+// Get All
+
 server.get('/tasks', (req, res) => 
 {
     res.send(JSON.stringify(tasks));
+});
+
+// Get One By Id
+
+server.get('/tasks/:id', (req, res) =>
+{
+    const taskId = Number(req.params.id);
+
+    const task = tasks.find((task) => task.id === taskId);
+
+    res.send(JSON.stringify(task));
 });
 
 server.listen(PORT, () =>
