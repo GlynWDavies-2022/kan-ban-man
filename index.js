@@ -31,6 +31,14 @@ const tasks = [
 
 server.use(express.json());
 
+server.use(express.urlencoded({ extended: true }));
+
+server.use((req, res, next) =>
+{
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+
 // ------------------------------------------------------------------------------------------------
 // Endpoints
 // ------------------------------------------------------------------------------------------------
