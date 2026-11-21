@@ -1,5 +1,9 @@
 const express = require('express');
 
+const morgan = require('morgan');
+
+const helmet = require('helmet');
+
 const server = express();
 
 const PORT = process.env.PORT ? process.env.PORT : 3000;
@@ -29,17 +33,23 @@ const tasks = [
 // Middleware
 // ------------------------------------------------------------------------------------------------
 
+server.use(helmet());
+
 server.use(express.json());
 
 server.use(express.urlencoded({ extended: true }));
 
 server.use(express.static("public"));
 
-server.use((req, res, next) =>
-{
-    console.log(`${req.method} ${req.url}`);
-    next();
-});
+console.log(`Environment: ${process.env.NODE_ENV}`);
+
+server.use(morgan("dev"));
+
+// server.use((req, res, next) =>
+// {
+//     console.log(`${req.method} ${req.url}`);
+//     next();
+// });
 
 // ------------------------------------------------------------------------------------------------
 // Endpoints
