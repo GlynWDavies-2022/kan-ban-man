@@ -42,12 +42,6 @@ if (server.get('env') === 'development')
     server.use(morgan("dev"));
 }
 
-// server.use((req, res, next) =>
-// {
-//     console.log(`${req.method} ${req.url}`);
-//     next();
-// });
-
 server.listen(PORT, () =>
 {
     console.log(`Server listening on port ${PORT}`);
