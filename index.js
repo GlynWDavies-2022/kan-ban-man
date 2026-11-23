@@ -41,9 +41,14 @@ server.use(express.urlencoded({ extended: true }));
 
 server.use(express.static("public"));
 
-console.log(`Environment: ${process.env.NODE_ENV}`);
+console.log(`Process Environment: ${process.env.NODE_ENV}`);
 
-server.use(morgan("dev"));
+console.log(`Application Environment: ${server.get("env")}`);
+
+if (server.get('env') === 'development')
+{
+    server.use(morgan("dev"));
+}
 
 // server.use((req, res, next) =>
 // {
