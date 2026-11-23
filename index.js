@@ -1,3 +1,11 @@
+const dotenv = require('dotenv');
+
+dotenv.config({
+    path: `.env.${process.env.NODE_ENV || 'development'}`
+});
+
+console.log(`Environment: ${process.env.NODE_ENV || 'Development'}`);
+
 const express = require('express');
 
 const morgan = require('morgan');
@@ -47,6 +55,7 @@ console.log(`Application Environment: ${server.get("env")}`);
 
 if (server.get('env') === 'development')
 {
+    console.log('Morgan added')
     server.use(morgan("dev"));
 }
 
